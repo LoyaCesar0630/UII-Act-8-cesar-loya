@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Producto</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { max-width: 500px; }
+        label { display: block; margin: 10px 0 5px; }
+        input, textarea { width: 100%; padding: 8px; margin-bottom: 10px; }
+        button { background-color: #007BFF; color: white; padding: 10px 15px; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Editar Producto</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Nombre:</label>
+        <input type="text" name="nombre" value="{{ producto.nombre }}" required>
+
+        <label>Descripción:</label>
+        <textarea name="descripcion" rows="3" required>{{ producto.descripcion }}</textarea>
+
+        <label>Precio:</label>
+        <input type="number" name="precio" step="0.01" min="0" value="{{ producto.precio }}" required>
+
+        <label>Cantidad:</label>
+        <input type="number" name="cantidad" min="0" value="{{ producto.cantidad }}" required>
+
+        <button type="submit">Actualizar</button>
+    </form>
+    <a href="/">Volver al listado</a>
+</body>
+</html>
